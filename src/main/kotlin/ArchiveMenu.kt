@@ -13,12 +13,12 @@ class ArchiveMenu(private val name: String) {
             println("Список заметок:")
             println("0. Создать заметку")
             notes.forEach { println("${it.key}. ${it.value}") }
-            if (screen.createScreen(foo())) return
+            if (screen.createScreen(createMenuList())) return
         }
     }
 
     //Создает набор для исполнения функций при выборе пункта меню
-    private fun foo(): MutableMap<Int, () -> Unit> {
+    private fun createMenuList(): MutableMap<Int, () -> Unit> {
         val menu = mutableMapOf<Int, () -> Unit>()
         menu[0] = { notes[++numMenu] = noteCreate() }
         for (i in 1..notes.size) {
